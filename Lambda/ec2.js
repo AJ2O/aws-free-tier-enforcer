@@ -68,12 +68,12 @@ exports.handler = async (event, context, callback) => {
     var terminate = false;
     var terminationCause = "";
 
-    if (!isFreeTierInstanceType(instanceData)){
+    if (!terminate && !isFreeTierInstanceType(instanceData)){
         terminate = true;
         terminationCause = "Non-compliant instance type: " + instanceData.InstanceType;
     }
 
-    if (!areFreeTierHoursLeft(instanceData)) {
+    if (!terminate && !areFreeTierHoursLeft(instanceData)) {
         terminate = true;
         terminationCause = "No more EC2 Free-Tier hours for the rest of the month"
     }

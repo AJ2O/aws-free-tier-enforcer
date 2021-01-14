@@ -11,7 +11,7 @@ variable "fft_prefix" {
 }
 
 variable "fft_tags" {
-  type = map
+  type = map(any)
   default = {
     "Tool" = "FFT"
   }

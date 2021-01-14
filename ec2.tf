@@ -51,10 +51,10 @@ resource "aws_lambda_function" "ec2" {
 
 # EventBridge Configuration
 resource "aws_cloudwatch_event_rule" "ec2" {
-  name        = var.lambda_name_ec2
-  description = "Triggers on pending EC2 instances"
+  name          = var.lambda_name_ec2
+  description   = "Triggers on pending EC2 instances"
   event_pattern = file("EventBridge_Patterns/ec2.json")
-  tags = var.fft_tags
+  tags          = var.fft_tags
 }
 
 resource "aws_cloudwatch_event_target" "ec2" {
