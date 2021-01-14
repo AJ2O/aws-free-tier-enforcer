@@ -35,8 +35,8 @@ terraform destroy
 - [ ] 1GB of snapshot storage
 
 ## RDS
-- [ ] Restrict instance types to db.t2.micro
-- [ ] Restrict DB engines to MySQL, PostgreSQL, MariaDB, Oracle BYOL, or SQL Server
+- [x] Restrict instance types to db.t2.micro
+- [x] Restrict DB engines to MySQL, PostgreSQL, MariaDB, Oracle BYOL, or SQL Server
 - [ ] 750 hours/month of RDS database usage
 - [ ] 20GB of General Purpose (SSD) storage
 - [ ] 20GB of DB backups and snapshots
