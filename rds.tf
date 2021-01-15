@@ -61,7 +61,7 @@ resource "aws_cloudwatch_event_target" "rds" {
   rule = aws_cloudwatch_event_rule.rds.name
   arn  = aws_lambda_function.rds.arn
 
-  input_path = "$.detail"
+  input_path = "$.detail.responseElements"
 }
 
 # Invoke Lambda via EventBridge

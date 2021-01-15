@@ -21,9 +21,7 @@ function isFreeTierDBInstanceClass(instanceData) {
 }
 
 // check DB storage
-function isFreeTierStorageAvailable(instanceData) {
-    return true;
-}
+const maxStorageSizeInGB = 20;
 
 // check instance hours
 function areFreeTierHoursLeft(instanceData) {
@@ -34,7 +32,8 @@ function areFreeTierHoursLeft(instanceData) {
 // main handler
 exports.handler = async (event, context, callback) => {
     // get instance ID reference
-    var instanceID = event["SourceIdentifier"];
+    var instanceID = event["dBInstanceIdentifier"];
+    var instanceSize = parseInt(event["allocatedStorage"]);
     var params = {
         DBInstanceIdentifier: instanceID
     };
@@ -69,9 +68,20 @@ exports.handler = async (event, context, callback) => {
         terminationCause = "Non-compliant instance class: " + instanceData.DBInstanceClass;
     }
 
-    if (!terminate && !isFreeTierStorageAvailable(instanceData)) {
-        terminate = true;
-        terminationCause = "Not enough storage space for database " + instanceID;
+    // check available storage
+    if (!terminate) {
+        var storageSizeUsed = instanceSize;
+
+        var volumes = await rds.describeDBInstances().promise();
+        for (let index = 0; index < volumes.length; index++) {
+            storageSizeUsed += volumes[index].AllocatedStorage;
+        }
+
+        terminate = storageSizeUsed > maxStorageSizeInGB;
+        if (terminate) {
+            terminationCause = "Total Storage size will exceed Free Tier: " + maxStorageSizeInGB + "GB > " 
+            + maxVolumeSizeInGB + "GB";
+        }
     }
 
     if (!terminate && !areFreeTierHoursLeft(instanceData)) {

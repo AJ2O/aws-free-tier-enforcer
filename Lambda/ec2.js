@@ -2,25 +2,10 @@
 const AWS = require("aws-sdk");
 const ec2 = new AWS.EC2();
 
-// check instance type
-function isFreeTierInstanceType(instanceData) {
-    return instanceData.InstanceType == "t2.micro";
-    // TODO: some regions allow t3.micro in Free-Tier
-}
-
 // check instance hours
 function areFreeTierHoursLeft(instanceData) {
     // TODO: calculate used and remaining free-tier hours left
     return true;
-}
-
-// terminate instance
-function terminateInstance(instanceID){
-    var params = {
-        InstanceIds: [
-            instanceID
-        ]
-    };
 }
 
 // main handler
@@ -68,9 +53,19 @@ exports.handler = async (event, context, callback) => {
     var terminate = false;
     var terminationCause = "";
 
-    if (!terminate && !isFreeTierInstanceType(instanceData)){
-        terminate = true;
-        terminationCause = "Non-compliant instance type: " + instanceData.InstanceType;
+    // check instance type
+    if (!terminate){
+        var instanceParams = {
+            InstanceTypes: [
+                instanceData.InstanceType
+            ]
+        };
+        instanceTypeData = await ec2.describeInstanceTypes(instanceParams).promise();
+        terminate = !instanceTypeData.InstanceTypes[0].FreeTierEligible;
+
+        if (terminate) {
+            terminationCause = "Non-compliant instance type: " + instanceData.InstanceType;
+        }
     }
 
     if (!terminate && !areFreeTierHoursLeft(instanceData)) {
