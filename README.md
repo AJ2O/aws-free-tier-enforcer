@@ -27,16 +27,16 @@ terraform destroy
 
 ## EC2
 - [x] Restrict instance types to t2.micro
-- [ ] Restrict instance types to t3.micro in select regions
+- [x] Restrict instance types to t3.micro in select regions
 - [ ] 750 hours/month of EC2 compute usage
 
 ## EBS
-- [ ] 30GB total storage for General Purpose (SSD) or Magnetic
+- [x] 30GB total storage for General Purpose (SSD) or Magnetic
 - [ ] 1GB of snapshot storage
 
 ## RDS
 - [x] Restrict instance types to db.t2.micro
 - [x] Restrict DB engines to MySQL, PostgreSQL, MariaDB, Oracle BYOL, or SQL Server
 - [ ] 750 hours/month of RDS database usage
-- [ ] 20GB of General Purpose (SSD) storage
+- [x] 20GB of General Purpose (SSD) storage
 - [ ] 20GB of DB backups and snapshots
