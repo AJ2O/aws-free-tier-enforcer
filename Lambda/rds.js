@@ -33,7 +33,6 @@ function areFreeTierHoursLeft(instanceData) {
 exports.handler = async (event, context, callback) => {
     // get instance ID reference
     var instanceID = event["dBInstanceIdentifier"];
-    var instanceSize = parseInt(event["allocatedStorage"]);
     var params = {
         DBInstanceIdentifier: instanceID
     };
@@ -70,17 +69,17 @@ exports.handler = async (event, context, callback) => {
 
     // check available storage
     if (!terminate) {
-        var storageSizeUsed = instanceSize;
+        var storageSizeUsed = 0;
 
-        var volumes = await rds.describeDBInstances().promise();
-        for (let index = 0; index < volumes.length; index++) {
-            storageSizeUsed += volumes[index].AllocatedStorage;
+        var allInstanceData = await rds.describeDBInstances().promise();
+        for (let index = 0; index < allInstanceData.length; index++) {
+            storageSizeUsed += allInstanceData.DBInstances[index].AllocatedStorage;
         }
 
         terminate = storageSizeUsed > maxStorageSizeInGB;
         if (terminate) {
-            terminationCause = "Total Storage size will exceed Free Tier: " + maxStorageSizeInGB + "GB > " 
-            + maxVolumeSizeInGB + "GB";
+            terminationCause = "Total Storage size will exceed Free Tier: " + storageSizeUsed + "GB > " 
+            + maxStorageSizeInGB + "GB";
         }
     }
 

@@ -1,0 +1,13 @@
+{
+  "source": [
+    "aws.rds"
+  ],
+  "detail-type": [
+    "RDS DB Snapshot Event"
+  ],
+  "detail": {
+    "EventID": [
+      "RDS-EVENT-0042"
+    ]
+  }
+}
