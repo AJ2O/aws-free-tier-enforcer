@@ -25,18 +25,37 @@ terraform destroy
 
 # Services
 
-## EC2
-- [x] Restrict instance types to t2.micro
-- [x] Restrict instance types to t3.micro in select regions
-- [ ] 750 hours/month of EC2 compute usage
+## DynamoDB
+- [ ] 25 provisioned Write Capacity Units (WCU)
+- [ ] 25 provisioned Read Capacity Units (RCU)
 
 ## EBS
 - [x] 30GB total storage for General Purpose (SSD) or Magnetic
 - [x] 1GB of snapshot storage
 
+## EC2
+- [x] Restrict instance types to `t2.micro` or `t3.micro` (depending on region)
+- [ ] 750 hours/month of EC2 compute usage
+
+## ECR
+- [ ] 500MB of storage
+
+## ElastiCache
+- [ ] Restrict instance types to `cache.t2.micro` or `cache.t3.micro`
+- [ ] 750 hours/month of compute usage
+
+## Elasticsearch
+- [ ] Restrict instance types to `t2.small.elasticsearch` or `t3.small.elasticsearch`
+- [ ] Restrict clusters to single-AZ
+- [ ] 750 hours/month of compute usage
+
+## GameLift
+- [ ] Restrict instance types to `c3.large`, `c4.large` or `c5.large` (depending on region)
+- [ ] 125 hours/month of compute usage
+
 ## RDS
-- [x] Restrict instance types to db.t2.micro
+- [x] Restrict instance types to `db.t2.micro`
 - [x] Restrict DB engines to MySQL, PostgreSQL, MariaDB, Oracle BYOL, or SQL Server
 - [ ] 750 hours/month of RDS database usage
 - [x] 20GB of General Purpose (SSD) storage
-- [ ] 20GB of DB backups and snapshots
+- [x] 20GB of DB backups and snapshots
