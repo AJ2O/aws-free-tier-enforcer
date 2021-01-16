@@ -41,8 +41,6 @@ resource "aws_lambda_function" "ebs_snapshot" {
   handler  = "ebs_snapshot.handler"
   runtime  = "nodejs12.x"
 
-  timeout = 60
-
   tags = var.fft_tags
 
   depends_on = [
