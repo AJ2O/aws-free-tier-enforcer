@@ -32,7 +32,7 @@ terraform destroy
 
 ## EBS
 - [x] 30GB total storage for General Purpose (SSD) or Magnetic
-- [ ] 1GB of snapshot storage
+- [x] 1GB of snapshot storage
 
 ## RDS
 - [x] Restrict instance types to db.t2.micro
