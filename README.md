@@ -26,8 +26,8 @@ terraform destroy
 # Services
 
 ## DynamoDB
-- [ ] 25 provisioned Write Capacity Units (WCU)
-- [ ] 25 provisioned Read Capacity Units (RCU)
+- [x] 25 provisioned Write Capacity Units (WCU)
+- [x] 25 provisioned Read Capacity Units (RCU)
 
 ## EBS
 - [x] 30GB total storage for General Purpose (SSD) or Magnetic
