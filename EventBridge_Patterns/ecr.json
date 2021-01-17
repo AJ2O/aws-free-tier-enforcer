@@ -1,0 +1,16 @@
+{
+  "source": [
+    "aws.ecr"
+  ],
+  "detail-type": [
+    "ECR Image Action"
+  ],
+  "detail": {
+    "action-type": [
+      "PUSH"
+    ],
+    "result": [
+      "SUCCESS"
+    ]
+  }
+}

@@ -38,7 +38,7 @@ terraform destroy
 - [ ] 750 hours/month of EC2 compute usage
 
 ## ECR
-- [ ] 500MB of storage
+- [x] 500MB of storage
 
 ## ElastiCache
 - [ ] Restrict instance types to `cache.t2.micro` or `cache.t3.micro`
