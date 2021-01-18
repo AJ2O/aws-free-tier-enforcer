@@ -45,7 +45,7 @@ terraform destroy
 - [ ] 750 hours/month of compute usage
 
 ## Elasticsearch
-- [ ] Restrict instance types to `t2.small.elasticsearch` or `t3.small.elasticsearch`
+- [x] Restrict instance types to `t2.small.elasticsearch` or `t3.small.elasticsearch`
 - [ ] Restrict clusters to single-AZ
 - [ ] 750 hours/month of compute usage
 

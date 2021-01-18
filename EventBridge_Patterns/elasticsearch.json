@@ -1,0 +1,16 @@
+{
+  "source": [
+    "aws.es"
+  ],
+  "detail-type": [
+    "AWS API Call via CloudTrail"
+  ],
+  "detail": {
+    "eventSource": [
+      "es.amazonaws.com"
+    ],
+    "eventName": [
+      "CreateElasticsearchDomain"
+    ]
+  }
+}
