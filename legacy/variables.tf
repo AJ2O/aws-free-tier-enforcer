@@ -6,13 +6,10 @@ variable "region" {
   default = "us-east-1"
 }
 
-variable "fft_prefix" {
-  default = "FFT"
-}
-
-variable "fft_tags" {
+variable "fte_tags" {
   type = map(any)
   default = {
-    "Tool" = "FFT"
+    "Tool" = "FTE"
+    "FTE_Protection" = "true"
   }
 }

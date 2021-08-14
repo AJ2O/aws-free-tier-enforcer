@@ -1,0 +1,46 @@
+dynamodb:
+  maxRCUs: 25
+  maxWCUs: 25
+
+ebs:
+  eligibleVolumeTypes:
+    - gp2
+    - gp3
+    - standard
+  maxSnapshotStorageGB: 1
+  maxVolumeStorageGB: 30
+
+ec2:
+  eligibleInstanceTypes:
+    - t2.micro
+    - t4g.micro
+  monthlyHourLimit: 750
+
+ecr:
+  maxImageStorageMB: 500
+
+elasticache:
+  eligibleNodeTypes:
+    - cache.t2.micro
+    - cache.t3.micro
+  monthlyHourLimit: 750
+
+elasticsearch:
+  eligibleInstanceTypes:
+    - t2.small.elasticsearch
+    - t3.small.elasticsearch
+  monthlyHourLimit: 750
+
+rds:
+  eligibleEngines:
+    - mariadb
+    - mysql
+    - oracle-se
+    - oracle-se1
+    - postgres
+    - sqlserver-ex
+  eligibleInstanceClasses:
+    - db.t2.micro
+  maxSnapshotStorageGB: 20
+  maxStorageGB: 20
+  monthlyHourLimit: 720 
